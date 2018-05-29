@@ -1,8 +1,6 @@
 package mvp.a658jjh.com.mvp_simple;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.IntentSender;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -25,14 +23,13 @@ import com.google.android.gms.location.LocationSettingsResult;
 // TODO It's not finished ^^
 public class LocationClass implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, ResultCallback<LocationSettingsResult> {
     private static final int INTENT_REQUEST_GET_IMAGES = 13;
-    private static final String[] PERMISSIONS_STORAGE = new String[]{"android.permission.READ_EXTERNAL_STORAGE"};
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     private static final int REQUEST_CODE_READ_EXTERNAL_STORAGE = 1001;
-    private int APP_REQUEST_CODE = 99;
-    private int DISPLACEMENT = 3;
-    private int FASTEST_INTERVAL = 5000;
-    private int LOCATION = 1;
-    private int UPDATE_INTERVAL = 10000;
+    private static final int FASTEST_INTERVAL = 5000;
+    private static final int UPDATE_INTERVAL = 10000;
+    private static final int APP_REQUEST_CODE = 99;
+    private static final int DISPLACEMENT = 3;
+    private static final int LOCATION = 1;
 
     private GoogleApiClient mGoogleApiClient;
     private LocationSettingsRequest mLocationSettingsRequest;
@@ -58,8 +55,8 @@ public class LocationClass implements GoogleApiClient.ConnectionCallbacks, Googl
     private void buildLocationRequest() {
         this.mLocationRequest = LocationRequest.create();
         this.mLocationRequest.setPriority(100);
-        this.mLocationRequest.setInterval(this.UPDATE_INTERVAL);
-        this.mLocationRequest.setFastestInterval(this.FASTEST_INTERVAL);
+        this.mLocationRequest.setInterval(UPDATE_INTERVAL);
+        this.mLocationRequest.setFastestInterval(FASTEST_INTERVAL);
     }
 
     private void buildLocationSettingsRequest() {
