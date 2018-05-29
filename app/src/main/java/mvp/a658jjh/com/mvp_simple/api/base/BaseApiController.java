@@ -2,22 +2,10 @@ package mvp.a658jjh.com.mvp_simple.api.base;
 
 import android.support.annotation.NonNull;
 
-import com.google.gson.ExclusionStrategy;
-import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
-import java.util.concurrent.TimeUnit;
-
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.SSLSocketFactory;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
 
 import mvp.a658jjh.com.mvp_simple.utils.Utils;
 import okhttp3.Interceptor;
@@ -67,42 +55,7 @@ public class BaseApiController {
         return client;
     }
 
-    /**
-     * Remove ssl when connect api server
-     *
-     * @return
-     */
-    private static SSLSocketFactory getSSLSocketFactory() {
-        try {
-            // Create a trust manager that does not validate certificate chains
-            final TrustManager[] trustAllCerts = new TrustManager[]{
-                    new X509TrustManager() {
-                        @Override
-                        public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) {
-                        }
-
-                        @Override
-                        public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) {
-                        }
-
-                        @Override
-                        public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-                            return new java.security.cert.X509Certificate[]{};
-                        }
-                    }
-            };
-
-            // Install the all-trusting trust manager
-            final SSLContext sslContext = SSLContext.getInstance("SSL");
-            sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
-            // Create an ssl socket factory with our all-trusting manager
-            return sslContext.getSocketFactory();
-        } catch (KeyManagementException | NoSuchAlgorithmException e) {
-            return null;
-        }
-    }
-
-    protected void initClient() {
+    private void initClient() {
         if (mApiSever == null) mApiSever = getClient().create(ApiSever.class);
     }
 

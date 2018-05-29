@@ -18,16 +18,14 @@ import retrofit2.http.Query;
  * Copyright © 2017 Fly Việt Technology
  *
  * @author Thanh Thien
- *         Created on 11/29/2017
+ * Created on 11/29/2017
  */
 public interface ApiSever {
 
     @POST("user/register")
-    @Headers({"Content-Type: application/json", "API-KEY: wx0z34ajQVSm5xdhZa7ygStlAbRVnfNC", "API-SECRET: iP]Y@!_zPnxvKgy;C58#z=}D9YzS(Z", "API-AUTHOR: CHINH_PHAM__FLY_SHOP__APPLICATION__V1.0"})
     Call<Status> register(@Body BodyRegister register);
 
     @POST("user/register")
-    @Headers({"Content-Type: application/json", "API-KEY: wx0z34ajQVSm5xdhZa7ygStlAbRVnfNC", "API-SECRET: iP]Y@!_zPnxvKgy;C58#z=}D9YzS(Z", "API-AUTHOR: CHINH_PHAM__FLY_SHOP__APPLICATION__V1.0"})
     Call<Status> forgotPassword(@Body BodyLogin bodyLogin);
 
     class BodyRegister {
@@ -45,7 +43,6 @@ public interface ApiSever {
     }
 
     @POST("user/login")
-    @Headers({"Content-Type: application/json", "API-KEY: wx0z34ajQVSm5xdhZa7ygStlAbRVnfNC", "API-SECRET: iP]Y@!_zPnxvKgy;C58#z=}D9YzS(Z", "API-AUTHOR: CHINH_PHAM__FLY_SHOP__APPLICATION__V1.0"})
     Call<User> login(@Body BodyLogin bodyLogin);
 
     class BodyLogin {
@@ -59,7 +56,6 @@ public interface ApiSever {
     }
 
     @POST("user/forgot-password")
-    @Headers({"Content-Type: application/json", "API-KEY: wx0z34ajQVSm5xdhZa7ygStlAbRVnfNC", "API-SECRET: iP]Y@!_zPnxvKgy;C58#z=}D9YzS(Z", "API-AUTHOR: CHINH_PHAM__FLY_SHOP__APPLICATION__V1.0"})
     Call<Status> forgotPassword(@Query("access_token") String access_token, @Body BodyForgotPassword bodyForgotPassword);
 
     class BodyForgotPassword {
